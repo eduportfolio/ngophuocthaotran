@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ngô Phước Thảo Trân — US College Application Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ══════════════ NAV ══════════════ -->
+  <nav class="nav" id="nav">
+    <div class="nav__logo">
+      <span class="nav__initials">T.T</span>
+      <span class="nav__name">Thảo Trân</span>
+    </div>
+    <button class="nav__hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#academics">Academics</a></li>
+      <li><a href="#honors">Honors</a></li>
+      <li><a href="#activities">Activities</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#products">Projects</a></li>
+      <li><a href="#leadership">Leadership</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ══════════════ HERO ══════════════ -->
+  <section class="hero" id="home">
+    <canvas id="bioCanvas"></canvas>
+
+    <div class="hero__content">
+      <p class="hero__label reveal-up">Class of 2027 · Ho Chi Minh City, Vietnam</p>
+      <h1 class="hero__name reveal-up delay-1">
+        Ngô Phước<br><em>Thảo Trân</em>
+      </h1>
+      <p class="hero__tagline reveal-up delay-2">
+        Biology · Genetics · Food Science<br>
+        <span>Passionate researcher exploring the living world</span>
+      </p>
+      <div class="hero__badges reveal-up delay-3">
+        <span class="badge">IELTS 7.5</span>
+        <span class="badge">SAT 1xxx</span>
+        <span class="badge">Wellspring Saigon</span>
+        <span class="badge badge--accent">Gold Medal Researcher</span>
+      </div>
+      <a href="#about" class="hero__cta reveal-up delay-4">
+        Explore Profile
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </a>
+    </div>
+
+    <div class="hero__scroll-hint">
+      <div class="hero__scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ══════════════ ABOUT ══════════════ -->
+  <section class="section about" id="about">
+    <div class="container">
+      <div class="about__grid">
+        <div class="about__photo-wrap reveal-left">
+          <div class="about__photo-frame">
+            <img src="assets/images/profile.jpg" alt="Thảo Trân" class="about__photo" onerror="this.parentElement.classList.add('no-img')" />
+            <div class="about__photo-placeholder">
+              <svg viewBox="0 0 100 100" fill="none">
+                <circle cx="50" cy="38" r="18" stroke="var(--accent)" stroke-width="1.5"/>
+                <path d="M18 82 C18 60 82 60 82 82" stroke="var(--accent)" stroke-width="1.5"/>
+              </svg>
+              <span>Photo</span>
+            </div>
+          </div>
+          <div class="about__photo-caption">
+            <span class="mono">born 05.07.2009</span>
+          </div>
+        </div>
+
+        <div class="about__text reveal-right">
+          <div class="section__label">About Me</div>
+          <h2 class="section__title">Curiosity-Driven.<br>Research-Focused.</h2>
+          <p class="about__bio">
+            I'm Thảo Trân — a 17-year-old student from Ho Chi Minh City with a deep fascination for the biological world. From the microscopic mechanisms of plant compounds to the science behind the food on our plates, I approach every question with the careful eye of a researcher and the drive to find real answers.
+          </p>
+          <p class="about__bio">
+            At Wellspring Saigon International Bilingual School, I've built a profile that bridges laboratory research, academic competition, and community service — always guided by a belief that science should serve people.
+          </p>
+          <div class="about__info-grid">
+            <div class="info-item">
+              <span class="info-item__label">School</span>
+              <span class="info-item__value">Wellspring Saigon IBS</span>
+            </div>
+            <div class="info-item">
+              <span class="info-item__label">Interest Field</span>
+              <span class="info-item__value">Biology / Genetics / Food Science</span>
+            </div>
+            <div class="info-item">
+              <span class="info-item__label">Learning Style</span>
+              <span class="info-item__value">Research > Technical</span>
+            </div>
+            <div class="info-item">
+              <span class="info-item__label">Email</span>
+              <span class="info-item__value">tran.ngo.0507@gmail.com</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ ACADEMICS ══════════════ -->
+  <section class="section academics" id="academics">
+    <div class="container">
+      <div class="section__header reveal-up">
+        <div class="section__label">Academic Excellence</div>
+        <h2 class="section__title">Scores & Credentials</h2>
+      </div>
+
+      <div class="academics__grid">
+        <div class="academics__gpa-card reveal-up delay-1">
+          <div class="gpa-card__header">
+            <span class="mono gpa-card__label">GPA Progress</span>
+          </div>
+          <div class="gpa-bars">
+            <div class="gpa-bar reveal-bar">
+              <span class="gpa-bar__grade">Grade 9</span>
+              <div class="gpa-bar__track">
+                <div class="gpa-bar__fill" data-score="9.3" style="--pct: 93%"></div>
+              </div>
+              <span class="gpa-bar__score">9.3 / 10</span>
+            </div>
+            <div class="gpa-bar reveal-bar">
+              <span class="gpa-bar__grade">Grade 10</span>
+              <div class="gpa-bar__track">
+                <div class="gpa-bar__fill" data-score="9.0" style="--pct: 90%"></div>
+              </div>
+              <span class="gpa-bar__score">9.0 / 10</span>
+            </div>
+            <div class="gpa-bar reveal-bar">
+              <span class="gpa-bar__grade">Grade 11</span>
+              <div class="gpa-bar__track">
+                <div class="gpa-bar__fill" data-score="9.0" style="--pct: 90%"></div>
+              </div>
+              <span class="gpa-bar__score">9.0 / 10</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="academics__test-cards">
+          <div class="test-card reveal-up delay-1">
+            <div class="test-card__score">1xxx</div>
+            <div class="test-card__name">SAT</div>
+            <div class="test-card__out">out of 1600</div>
+            <div class="test-card__bar">
+              <div class="test-card__fill" style="--pct: 93.75%"></div>
+            </div>
+            <div class="test-card__note">Top 5% globally</div>
+          </div>
+          <div class="test-card reveal-up delay-2">
+            <div class="test-card__score">7.5</div>
+            <div class="test-card__name">IELTS</div>
+            <div class="test-card__out">overall band score</div>
+            <div class="test-card__bar">
+              <div class="test-card__fill" style="--pct: 83.3%"></div>
+            </div>
+            <div class="test-card__note">C1 Advanced Level</div>
+          </div>
+          <div class="test-card test-card--school reveal-up delay-3">
+            <div class="test-card__icon">
+              <svg viewBox="0 0 40 40" fill="none">
+                <rect x="6" y="20" width="28" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M20 4 L36 14 H4 L20 4Z" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="15" y="26" width="10" height="10" rx="1" stroke="currentColor" stroke-width="1.2"/>
+              </svg>
+            </div>
+            <div class="test-card__name">Wellspring Saigon</div>
+            <div class="test-card__out">International Bilingual School</div>
+            <div class="test-card__note">Ho Chi Minh City, Vietnam</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ HONORS ══════════════ -->
+  <section class="section honors" id="honors">
+    <div class="container">
+      <div class="section__header reveal-up">
+        <div class="section__label">Recognition</div>
+        <h2 class="section__title">Honors & Awards</h2>
+      </div>
+
+      <div class="honors__list">
+
+        <!-- Award 1 -->
+        <div class="honor-item reveal-up delay-1">
+          <div class="honor-item__media">
+            <div class="honor-item__img-wrap">
+              <img src="assets/images/1i1w_cert.jpg" alt="1I1W Gold Medal" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+              <div class="img-placeholder">
+                <span>Award Photo</span>
+              </div>
+            </div>
+          </div>
+          <div class="honor-item__content">
+            <div class="honor-item__meta">
+              <span class="honor-badge honor-badge--gold">Gold Medal</span>
+              <span class="mono honor-item__year">2024–2025</span>
+            </div>
+            <h3 class="honor-item__title">1I1W International Innovation Award</h3>
+            <p class="honor-item__desc">
+              Awarded for original research on <strong>formulating a shampoo product containing Neem leaf extract</strong>. The project demonstrated measurable antimicrobial efficacy through laboratory testing, combining ethnobotanical knowledge with cosmetic chemistry — exemplifying the intersection of biology, food science, and consumer wellness.
+            </p>
+            <div class="honor-item__tags">
+              <span>Plant Biology</span>
+              <span>Cosmetic Chemistry</span>
+              <span>Applied Research</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Award 2 -->
+        <div class="honor-item honor-item--reverse reveal-up delay-2">
+          <div class="honor-item__media">
+            <div class="honor-item__img-wrap">
+              <img src="assets/images/award-olympiad.jpg" alt="Biology Olympiad" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+              <div class="img-placeholder">
+                <span>Award Photo</span>
+              </div>
+            </div>
+          </div>
+          <div class="honor-item__content">
+            <div class="honor-item__meta">
+              <span class="honor-badge honor-badge--bronze">3rd Place</span>
+              <span class="mono honor-item__year">2025–2026</span>
+            </div>
+            <h3 class="honor-item__title">Biology Olympiad — City Level, HCMC</h3>
+            <p class="honor-item__desc">
+              Earned third place in the Ho Chi Minh City Biology Olympiad, a rigorous academic competition testing advanced knowledge in genetics, cellular biology, ecology, and biochemistry. Competing among hundreds of students citywide, this result reflects both deep subject mastery and the ability to perform under academic pressure.
+            </p>
+            <div class="honor-item__tags">
+              <span>Genetics</span>
+              <span>Biochemistry</span>
+              <span>Academic Competition</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Award 3 -->
+        <div class="honor-item reveal-up delay-3">
+          <div class="honor-item__media">
+            <div class="honor-item__img-wrap">
+              <img src="assets/images/award-wsc.jpg" alt="World Scholar's Cup" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+              <div class="img-placeholder">
+                <span>Award Photo</span>
+              </div>
+            </div>
+          </div>
+          <div class="honor-item__content">
+            <div class="honor-item__meta">
+              <span class="honor-badge honor-badge--silver">Silver Medal</span>
+              <span class="mono honor-item__year">2024</span>
+            </div>
+            <h3 class="honor-item__title">The World Scholar's Cup — National Round</h3>
+            <p class="honor-item__desc">
+              Silver medal in the Team Writing category at the National Round of The World Scholar's Cup — an international interdisciplinary tournament covering science, history, arts, and social studies. Demonstrated collaborative argumentation, cross-disciplinary synthesis, and academic writing under timed conditions.
+            </p>
+            <div class="honor-item__tags">
+              <span>Academic Debate</span>
+              <span>Team Writing</span>
+              <span>Interdisciplinary</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ ACTIVITIES ══════════════ -->
+  <section class="section activities" id="activities">
+    <div class="container">
+      <div class="section__header reveal-up">
+        <div class="section__label">Beyond the Classroom</div>
+        <h2 class="section__title">Extracurricular & Community</h2>
+      </div>
+
+      <div class="activities__grid">
+
+        <!-- Activity 1 -->
+        <div class="activity-card reveal-up delay-1">
+          <div class="activity-card__img-wrap">
+            <img src="assets/images/choray/choray_cert.jpg" alt="Chợ Rẫy Hospital" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+            <div class="img-placeholder img-placeholder--card">
+              <svg viewBox="0 0 48 48" fill="none"><path d="M24 8v32M8 24h32" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="6" y="6" width="36" height="36" rx="4" stroke="currentColor" stroke-width="1.5"/></svg>
+              <span>Activity Photo</span>
+            </div>
+            <div class="activity-card__badge">2026</div>
+          </div>
+          <div class="activity-card__body">
+            <span class="activity-card__type">Volunteer Work</span>
+            <h3 class="activity-card__title">Chợ Rẫy Hospital Volunteer</h3>
+            <p class="activity-card__desc">
+              Participated in community volunteer work at Chợ Rẫy Hospital, one of Vietnam's largest and most prominent public hospitals. Supporting patients and hospital operations provided direct exposure to healthcare realities and reinforced the human dimension of biomedical science.
+            </p>
+          </div>
+        </div>
+
+        <!-- Activity 2 -->
+        <div class="activity-card reveal-up delay-2">
+          <div class="activity-card__img-wrap">
+            <img src="assets/images/activity-aiLinh.jpg" alt="Ái Linh Volunteer" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+            <div class="img-placeholder img-placeholder--card">
+              <svg viewBox="0 0 48 48" fill="none"><path d="M24 38s-16-10-16-22a10 10 0 0 1 16-8 10 10 0 0 1 16 8c0 12-16 22-16 22z" stroke="currentColor" stroke-width="1.5"/></svg>
+              <span>Activity Photo</span>
+            </div>
+            <div class="activity-card__badge">Ongoing</div>
+          </div>
+          <div class="activity-card__body">
+            <span class="activity-card__type">Community Service</span>
+            <h3 class="activity-card__title">Tình Nguyện Tình Thương Ái Linh</h3>
+            <p class="activity-card__desc">
+              Active volunteer with the Ái Linh Compassionate Volunteering initiative — a grassroots program providing care and support for underprivileged communities. This experience deepened my commitment to using science and education as tools for social equity.
+            </p>
+          </div>
+        </div>
+
+        <!-- Activity 3 -->
+        <div class="activity-card activity-card--wide reveal-up delay-3">
+          <div class="activity-card__img-wrap">
+            <img src="assets/images/activity-biospaze.jpg" alt="BioSpaZe Research Club" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+            <div class="img-placeholder img-placeholder--card">
+              <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="10" stroke="currentColor" stroke-width="1.5"/><circle cx="24" cy="24" r="4" fill="var(--accent)" opacity="0.4"/><path d="M24 6v4M24 38v4M6 24h4M38 24h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <span>Club Photo</span>
+            </div>
+            <div class="activity-card__badge activity-card__badge--accent">R&D Member</div>
+          </div>
+          <div class="activity-card__body">
+            <span class="activity-card__type">Research Club</span>
+            <h3 class="activity-card__title">BioSpaZe — Biomedical Exploration Club</h3>
+            <p class="activity-card__desc">
+              R&D member of BioSpaZe, a student-led research club dedicated to exploring the frontiers of biomedical science. Current research focus: <strong>lung cancer biology</strong> — investigating cellular mechanisms, risk factors, and emerging therapeutic approaches. This work reflects my interest in translating biological research into real-world health impact.
+            </p>
+            <div class="activity-card__tags">
+              <span>Oncology</span>
+              <span>Cell Biology</span>
+              <span>Biomedical Research</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ RESEARCH ══════════════ -->
+  <section class="section research" id="research">
+    <div class="container">
+      <div class="section__header reveal-up">
+        <div class="section__label">Research Work</div>
+        <h2 class="section__title">Publications & Projects</h2>
+      </div>
+
+      <div class="empty-section reveal-up delay-1">
+        <div class="empty-section__inner">
+          <div class="empty-section__icon">
+            <svg viewBox="0 0 64 64" fill="none">
+              <circle cx="32" cy="32" r="20" stroke="var(--accent)" stroke-width="1.2" stroke-dasharray="4 3"/>
+              <path d="M32 22v10l6 6" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M20 8 C20 8 26 12 32 12 C38 12 44 8 44 8" stroke="var(--muted)" stroke-width="1" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <p class="empty-section__text">Research entries coming soon</p>
+          <p class="empty-section__sub">This section will feature published papers, research abstracts, and ongoing laboratory investigations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ PRODUCTS ══════════════ -->
+  <section class="section products" id="products">
+    <div class="container">
+      <div class="section__header reveal-up">
+        <div class="section__label">Personal Projects</div>
+        <h2 class="section__title">Creations & Products</h2>
+      </div>
+
+      <div class="empty-section reveal-up delay-1">
+        <div class="empty-section__inner">
+          <div class="empty-section__icon">
+            <svg viewBox="0 0 64 64" fill="none">
+              <rect x="14" y="14" width="36" height="36" rx="4" stroke="var(--accent)" stroke-width="1.2" stroke-dasharray="4 3"/>
+              <path d="M24 32h16M32 24v16" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <p class="empty-section__text">Projects coming soon</p>
+          <p class="empty-section__sub">This section will showcase personal products, innovations, and science-inspired creations developed outside of school.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ LEADERSHIP ══════════════ -->
+  <section class="section leadership" id="leadership">
+    <div class="container">
+      <div class="section__header reveal-up">
+        <div class="section__label">Leadership</div>
+        <h2 class="section__title">Roles & Responsibilities</h2>
+      </div>
+
+      <div class="empty-section reveal-up delay-1">
+        <div class="empty-section__inner">
+          <div class="empty-section__icon">
+            <svg viewBox="0 0 64 64" fill="none">
+              <circle cx="32" cy="20" r="8" stroke="var(--accent)" stroke-width="1.2" stroke-dasharray="4 3"/>
+              <circle cx="16" cy="44" r="6" stroke="var(--muted)" stroke-width="1"/>
+              <circle cx="48" cy="44" r="6" stroke="var(--muted)" stroke-width="1"/>
+              <path d="M32 28 L16 38M32 28 L48 38" stroke="var(--accent)" stroke-width="1" stroke-dasharray="3 2"/>
+            </svg>
+          </div>
+          <p class="empty-section__text">Leadership entries coming soon</p>
+          <p class="empty-section__sub">This section will highlight leadership roles, club positions, initiatives led, and community impact.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ CONTACT ══════════════ -->
+  <section class="section contact" id="contact">
+    <div class="container">
+      <div class="contact__inner reveal-up">
+        <div class="section__label">Get In Touch</div>
+        <h2 class="section__title">Let's Connect</h2>
+        <p class="contact__desc">
+          Interested in collaborating, learning more about my research, or just saying hello? I'd love to hear from you.
+        </p>
+        <a href="mailto:tran.ngo.0507@gmail.com" class="contact__email">
+          tran.ngo.0507@gmail.com
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <div class="contact__meta">
+          <span class="mono">Ho Chi Minh City, Vietnam</span>
+          <span class="mono">·</span>
+          <span class="mono">Wellspring Saigon IBS</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ FOOTER ══════════════ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span class="mono footer__copy">© 2026 Ngô Phước Thảo Trân</span>
+      <span class="mono footer__built">Built with love ❤︎</span>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
