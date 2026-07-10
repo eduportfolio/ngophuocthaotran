@@ -294,72 +294,122 @@ document.querySelectorAll('.gpa-bar').forEach(bar => gpaObserver.observe(bar));
 
   resize();
   render();
-
-  /* ─── LIGHTBOX IMAGE VIEWER ─── */
-  (function initLightbox() {
-    // 1. Tự động tạo cấu trúc HTML cho Lightbox đỡ phải sửa file index.html
-    const modal = document.createElement('div');
-    modal.className = 'lightbox-modal';
-    modal.innerHTML = `
+})();
+/* ─── LIGHTBOX GALLERY IMAGE VIEWER (HỖ TRỢ MULTIPLE IMAGES) ─── */
+(function initLightboxGallery() {
+  // 1. Tạo cấu trúc HTML Lightbox mới có thêm nút Next (<) và Prev (>)
+  const modal = document.createElement('div');
+  modal.className = 'lightbox-modal';
+  modal.innerHTML = `
     <button class="lightbox-modal__close" aria-label="Close">&times;</button>
+    <button class="lightbox-nav lightbox-nav--prev" aria-label="Previous">&#10094;</button>
     <img class="lightbox-modal__img" src="" alt="Zoomed view">
+    <button class="lightbox-nav lightbox-nav--next" aria-label="Next">&#10095;</button>
   `;
-    document.body.appendChild(modal);
+  document.body.appendChild(modal);
 
-    const modalImg = modal.querySelector('.lightbox-modal__img');
-    const closeBtn = modal.querySelector('.lightbox-modal__close');
+  const modalImg = modal.querySelector('.lightbox-modal__img');
+  const closeBtn = modal.querySelector('.lightbox-modal__close');
+  const prevBtn = modal.querySelector('.lightbox-nav--prev');
+  const nextBtn = modal.querySelector('.lightbox-nav--next');
 
-    // 2. Gom tất cả các KHUNG CHỨA vàẢNH trong portfolio của ông
-    // Thay vì chỉ chọn thẻ img, ta chọn cả thẻ bọc bên ngoài để bấm trúng chỗ nào cũng zoom được
-    const targetSelectors = [
-      '.about__photo-wrap',
-      '.honor-item__media',
-      '.activity-card__img-wrap'
-    ];
+  let currentAlbum = []; // Lưu danh sách các ảnh của block đang được click
+  let currentIndex = 0;  // Vị trí ảnh đang xem trong album
 
-    const containers = document.querySelectorAll(targetSelectors.join(', '));
+  // 2. Gom tất cả các vùng chứa ảnh chính trên portfolio
+  const targetSelectors = [
+    '.about__photo-wrap',
+    '.honor-item__media',
+    '.activity-card__img-wrap'
+  ];
 
-    // 3. Gán sự kiện click cho toàn bộ khung chứa ảnh
-    containers.forEach(container => {
-      // Thêm hiệu ứng chuột zoom cho cả khung để người dùng biết là bấm được
-      container.style.cursor = 'zoom-in';
+  const containers = document.querySelectorAll(targetSelectors.join(', '));
 
-      container.addEventListener('click', () => {
-        const img = container.querySelector('img');
-        if (!img) return;
+  containers.forEach(container => {
+    container.style.cursor = 'zoom-in';
 
-        // Nếu ảnh đang bị lỗi (bị ẩn display: none) thì không cho zoom để tránh hiện modal trống
-        if (img.style.display === 'none') {
-          console.warn("Ảnh này đang bị lỗi đường dẫn hoặc chưa có file nên không thể phóng to!");
-          return;
-        }
+    container.addEventListener('click', () => {
+      // Lấy toàn bộ ảnh trong khung
+      const allImgs = container.querySelectorAll('img');
 
-        const src = img.getAttribute('src');
-        if (!src) return;
+      // Kiểm tra xem tấm ảnh đầu tiên (ảnh đại diện hiển thị) có đang bị lỗi onerror và ẩn đi không
+      const firstImg = allImgs[0];
+      if (firstImg && firstImg.style.display === 'none' && firstImg.getAttribute('onerror')) {
+        console.warn("Ảnh đại diện của thẻ này đang bị lỗi đường dẫn, không mở Album.");
+        return;
+      }
 
-        modalImg.setAttribute('src', src);
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Khóa cuộn trang khi đang xem ảnh
-      });
-    });
+      // Nếu ảnh đại diện ok, ta gom tất cả các ảnh hiện có để làm Album (bỏ qua check style.display)
+      const imgsInContainer = Array.from(allImgs);
 
-    // 4. Đóng lại khi bấm nút X hoặc bấm ra ngoài màn hình đen
-    const closeModal = () => {
-      modal.classList.remove('active');
-      document.body.style.overflow = ''; // Mở lại cuộn trang
-      setTimeout(() => modalImg.setAttribute('src', ''), 400); // Xóa src ảnh cũ khi ẩn xong
-    };
+      if (imgsInContainer.length === 0) return;
 
-    closeBtn.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) closeModal(); // Chỉ đóng khi click trúng màn hình nền
-    });
+      // Lưu album ảnh hiện tại và reset index về 0 (ảnh đầu tiên)
+      currentAlbum = imgsInContainer.map(img => img.getAttribute('src'));
+      currentIndex = 0;
 
-    // 5. Thêm phím ESC trên bàn phím để đóng cho chuyên nghiệp
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modal.classList.contains('active')) {
-        closeModal();
+      updateModalImage();
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+
+      // Ẩn/Hiện nút chuyển ảnh tùy thuộc vào số lượng ảnh trong album
+      if (currentAlbum.length > 1) {
+        prevBtn.style.display = 'block';
+        nextBtn.style.display = 'block';
+      } else {
+        prevBtn.style.display = 'none';
+        nextBtn.style.display = 'none';
       }
     });
-  })();
+  });
+
+  // Hàm cập nhật ảnh dựa trên currentIndex
+  function updateModalImage() {
+    modalImg.style.transform = 'scale(0.95)';
+    modalImg.style.opacity = '0';
+
+    setTimeout(() => {
+      modalImg.setAttribute('src', currentAlbum[currentIndex]);
+      modalImg.style.transform = 'scale(1)';
+      modalImg.style.opacity = '1';
+    }, 150); // Hiệu ứng chuyển ảnh mượt mà mờ dần rồi hiện ra
+  }
+
+  // Logic chuyển sang ảnh tiếp theo
+  function showNext() {
+    currentIndex = (currentIndex + 1) % currentAlbum.length;
+    updateModalImage();
+  }
+
+  // Logic quay lại ảnh trước đó
+  function showPrev() {
+    currentIndex = (currentIndex - 1 + currentAlbum.length) % currentAlbum.length;
+    updateModalImage();
+  }
+
+  // Sự kiện Click cho các nút Điều hướng
+  nextBtn.addEventListener('click', (e) => { e.stopPropagation(); showNext(); });
+  prevBtn.addEventListener('click', (e) => { e.stopPropagation(); showPrev(); });
+
+  // Đóng Modal
+  const closeModal = () => {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+    setTimeout(() => modalImg.setAttribute('src', ''), 400);
+  };
+
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  // Hỗ trợ phím mũi tên Trái / Phải & ESC trên bàn phím cho pro
+  window.addEventListener('keydown', (e) => {
+    if (!modal.classList.contains('active')) return;
+    if (e.key === 'Escape') closeModal();
+    if (currentAlbum.length > 1) {
+      if (e.key === 'ArrowRight') showNext();
+      if (e.key === 'ArrowLeft') showPrev();
+    }
+  });
 })();
