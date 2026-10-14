@@ -594,19 +594,24 @@
   <!-- ══════════════ PRODUCTS ══════════════ -->
   <section class="section products" id="products">
     <div class="container">
-      <div class="section__header reveal-up">
+      <header class="section__header reveal-up">
         <div class="section__label">Personal Projects</div>
-        <h2 class="section__title">Creations & Products</h2>
-      </div>
+        <h2 class="section__title">Creations &amp; Products</h2>
+      </header>
   
       <div class="activities__grid">
-        <div class="activity-card activity-card--wide reveal-up delay-1">
-          <div class="activity-card__img-wrap">
-            <img src="assets/images/asthma-bioinformatics.jpg" alt="Asthma Genomic Clustering Project"
-              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+        <article class="activity-card activity-card--wide reveal-up delay-1">
   
-            <div class="img-placeholder img-placeholder--card">
-              <svg viewBox="0 0 48 48" fill="none">
+          <!-- POSTER TỐI ƯU VỚI WEBP -->
+          <div class="activity-card__img-wrap project-poster">
+            <picture>
+              <img class="project-poster__image" src="assets/Poster_PHARMACOGENOMIC_PROFILING.png"
+                alt="Pharmacogenomic Profiling of Airway Control and Immune Response Gene Variants in Guiding Personalized Asthma Treatment"
+                loading="lazy" decoding="async" width="1200" height="675" />
+            </picture>
+  
+            <div class="img-placeholder img-placeholder--card" hidden>
+              <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
                 <path d="M12 12c4 4 8 4 12 0s8-4 12 0M12 24c4 4 8 4 12 0s8-4 12 0M12 36c4 4 8 4 12 0s8-4 12 0"
                   stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
                 <path d="M18 14v16M30 18v16" stroke="currentColor" stroke-width="1" stroke-dasharray="2 2" />
@@ -617,35 +622,90 @@
                 <circle cx="24" cy="24" r="3" fill="var(--accent)" />
                 <circle cx="36" cy="24" r="3" fill="currentColor" />
               </svg>
-              <span>Bioinformatics Project</span>
+              <span>Pharmacogenomics Poster</span>
             </div>
-            <div class="activity-card__badge activity-card__badge--accent">Independent Research</div>
+  
+            <div class="activity-card__badge activity-card__badge--accent">
+              Independent Research
+            </div>
           </div>
+  
+          <!-- NỘI DUNG VÀ VIDEO -->
           <div class="activity-card__body">
-            <span class="activity-card__type">Bioinformatics & Machine Learning</span>
-            <h3 class="activity-card__title">Applying Genomic Clustering Algorithms for Asthma Endotype Prediction and
-              Stratification</h3>
+            <span class="activity-card__type">
+              Bioinformatics &amp; Pharmacogenomics
+            </span>
+  
+            <h3 class="activity-card__title">
+              Pharmacogenomic Profiling of Airway Control and Immune Response
+              Gene Variants in Guiding Personalized Asthma Treatment
+            </h3>
+  
             <p class="activity-card__desc">
-              Developed an independent computational project focusing on molecular heterogeneity in respiratory diseases.
-              By implementing **unsupervised machine learning algorithms (K-means and Hierarchical Clustering)** on public
-              transcriptomic data from patient airways, the project aims to identify distinct asthma endotypes.
-              Identifying these genetic clusters supports precision medicine by predicting patient risks, understanding
-              specific pathogenic pathways, and facilitating targeted clinical diagnosis.
+              Developed an independent computational and pharmacogenomic
+              research project focusing on molecular heterogeneity and
+              therapeutic response in respiratory diseases. By profiling key
+              genetic variants influencing airway smooth muscle control and
+              immune signaling pathways, this work establishes a predictive
+              genomic framework to optimize therapeutic choice, improve
+              treatment efficacy, and advance precision medicine for asthma
+              patients.
             </p>
-            <div class="activity-card__tags">
+  
+            <div class="activity-card__tags project-tags">
               <span>Bioinformatics</span>
-              <span>Cluster Analysis</span>
-              <span>Genomic Data</span>
+              <span>Pharmacogenomics</span>
+              <span>Gene Variants</span>
+              <span>Immune Response</span>
               <span>Precision Medicine</span>
             </div>
-          </div>
-        </div>
-      </div>
   
+            <!-- Video iframe trigger -->
+            <div class="project-video">
+              <button class="project-video__trigger" type="button"
+                data-video-src="https://drive.google.com/file/d/1OmOrBLLrRkUP1g6Xyb0XcB8M1wuqNidb/preview"
+                aria-label="Play pharmacogenomics research presentation">
+                <span class="project-video__play" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M7 4.5a1 1 0 0 1 1.5-.86l11 7a1.6 1.6 0 0 1 0 2.72l-11 7A1 1 0 0 1 7 19.5z" />
+                  </svg>
+                </span>
+  
+                <span class="project-video__title">
+                  Watch Research Presentation
+                </span>
+  
+                <span class="project-video__subtitle">
+                  Click to load Google Drive player
+                </span>
+              </button>
+            </div>
+  
+            <div class="project-actions">
+              <a href="assets/Full_text_PHARMACOGENOMIC_PROFILING.pdf" target="_blank" rel="noopener noreferrer"
+                class="hero__cta project-action">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <path d="M14 2v6h6M8 13h8M8 17h8" />
+                </svg>
+                <span>Read Full Paper (PDF)</span>
+              </a>
+  
+              <a href="https://drive.google.com/file/d/1OmOrBLLrRkUP1g6Xyb0XcB8M1wuqNidb/view" target="_blank"
+                rel="noopener noreferrer" class="hero__cta project-action project-action--secondary">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <polygon points="5 3 19 12 5 21 5 3" />
+                </svg>
+                <span>Watch on Google Drive</span>
+              </a>
+            </div>
+          </div>
+  
+        </article>
+      </div>
     </div>
   </section>
 
-  <!-- ══════════════ LEADERSHIP ══════════════ -->
   <!-- ══════════════ LEADERSHIP ══════════════ -->
   <section class="section leadership" id="leadership">
     <div class="container">
@@ -704,7 +764,7 @@
               <span class="honor-badge honor-badge--accent">Project Leader</span>
               <span class="mono honor-item__year">2025</span>
             </div>
-            <h3 class="honor-item__title">HCMC Book Street Cultural Project</h3>
+            <h3 class="honor-item__title">Wellspring Cultural Project</h3>
             <p class="honor-item__desc">
               Spearheaded a cultural and educational community development initiative based at the Ho Chi Minh City Book
               Street. Led student teams in organizing educational outreach events, coordinated large-scale book donation

@@ -413,3 +413,80 @@ document.querySelectorAll('.gpa-bar').forEach(bar => gpaObserver.observe(bar));
     }
   });
 })();
+
+
+/* ══════════════════════════════════════════════
+   PROJECT MEDIA OPTIMIZATION
+   - Lazy-load Google Drive video on click
+   - Handle broken poster images
+══════════════════════════════════════════════ */
+
+// Tránh khởi tạo nhiều lần
+(() => {
+  if (window.__projectMediaInitialized) return;
+  window.__projectMediaInitialized = true;
+
+  /* ─── POSTER IMAGE FALLBACK ─── */
+
+  document.addEventListener(
+    "error",
+    (event) => {
+      const img = event.target;
+
+      if (!img.matches(".project-poster__image")) return;
+
+      // Ẩn ảnh bị lỗi
+      img.hidden = true;
+
+      // Hiện placeholder tương ứng
+      const container = img.closest(".project-poster");
+      const placeholder = container?.querySelector(
+        ".img-placeholder"
+      );
+
+      if (placeholder) {
+        placeholder.hidden = false;
+      }
+    },
+    true
+  );
+
+  /* ─── ON-DEMAND GOOGLE DRIVE VIDEO ─── */
+
+  document.addEventListener("click", (event) => {
+    const button = event.target.closest(
+      ".project-video__trigger"
+    );
+
+    if (!button) return;
+
+    const wrapper = button.closest(".project-video");
+    const videoUrl = button.dataset.videoSrc;
+
+    if (!wrapper || !videoUrl) return;
+
+    // Nếu video đã được tạo thì không tạo lại
+    if (wrapper.querySelector("iframe")) return;
+
+    const iframe = document.createElement("iframe");
+
+    iframe.src = videoUrl;
+    iframe.title = "Pharmacogenomics Research Presentation";
+    iframe.loading = "lazy";
+    iframe.allow = "autoplay; fullscreen; picture-in-picture";
+    iframe.allowFullscreen = true;
+    iframe.referrerPolicy = "strict-origin-when-cross-origin";
+
+    Object.assign(iframe.style, {
+      position: "absolute",
+      inset: "0",
+      width: "100%",
+      height: "100%",
+      border: "0"
+    });
+
+    // Thay nút Play bằng iframe
+    wrapper.replaceChildren(iframe);
+  });
+
+})();
